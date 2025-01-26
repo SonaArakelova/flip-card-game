@@ -2,6 +2,8 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 import { faker } from '@faker-js/faker'; 
 
+
+
 const generateDeck = (numPairs) => {
   const images = [];
   for (let i = 0; i < numPairs; i++) {
@@ -104,7 +106,7 @@ const MemoryGame = () => {
                   onClick={() => flipCard(index)}
                 >
                   {isFlipped ? (
-                    <img src={image} alt="card" style={{ width: '100%', height: '100%' }} />
+                    <img src={image} alt="card" style = {{ width: '100%', height: '100%' }} />
                   ) : (
                     '?'
                   )}
@@ -128,8 +130,6 @@ const MemoryGame = () => {
     </div>
   );
 };
-
-
 
 
 function App() {
