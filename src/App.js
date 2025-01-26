@@ -10,7 +10,7 @@ const generateDeck = (numPairs) => {
   }
 
   const deck = [...images, ...images]; // Duplicate the images 
-  return deck.sort(() => Math.random() - 0.5); // Shuffle 
+  return deck.sort(() => Math.random() - 0.5); // Shuffle
 };
 
 const MemoryGame = () => {
@@ -21,16 +21,15 @@ const MemoryGame = () => {
   const [gameStarted, setGameStarted] = useState(false); 
   const [score, setScore] = useState(0); 
 
-
   const flipCard = (index) => {
     if (flippedIndices.length === 2 || flippedIndices.includes(index) || matchedPairs.includes(deck[index])) {
-      return; // Don't flip if two cards matches
+      return; 
     }
 
     setFlippedIndices((prev) => [...prev, index]);
   };
 
-  // Checking
+  // Checking the flipped cards 
   useEffect(() => {
     if (flippedIndices.length === 2) {
       const [firstIndex, secondIndex] = flippedIndices;
@@ -39,12 +38,14 @@ const MemoryGame = () => {
         setScore((prevScore) => prevScore + 10); 
       }
 
-      // flip back
+      // Flip back 
       setTimeout(() => setFlippedIndices([]), 1000);
     }
   }, [flippedIndices, deck]);
 
   const restartGame = () => {
+    if (numPairs < 2) return; 
+
     setDeck(generateDeck(numPairs));
     setFlippedIndices([]);
     setMatchedPairs([]);
@@ -52,30 +53,39 @@ const MemoryGame = () => {
     setGameStarted(true);
   };
 
-  // End the game 
+  // Check for game over 
   useEffect(() => {
     if (matchedPairs.length === numPairs) {
-      setGameStarted(false);
+      setGameStarted(false); 
     }
   }, [matchedPairs, numPairs]);
+
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+
+    if (value === '' || (value >= 2 && value <= 10 && value % 2 === 0)) {
+      setNumPairs(value);
+    }
+  };
 
   return (
     <div className="memory-game">
       <h1>Memory Game</h1>
 
-      {/* Input  */}
+      {/* Input field  */}
       {!gameStarted ? (
         <div className="input-container">
-          <label className='numlabel' htmlFor="num-pairs">Choose number of pairs  </label>
-          <br></br>
-          <input className='numinput'
+          <label className='numlabel' htmlFor="num-pairs">Choose number of pairs:</label>
+          <br />
+          <input
+            className='numinput'
             type="number"
             id="num-pairs"
             min="2"
-            step="2"
             max="10"
+            step="2"
             value={numPairs}
-            onChange={(e) => setNumPairs(Number(e.target.value))}
+            onChange={handleInputChange}
           />
           <button onClick={restartGame}>Start Game</button>
         </div>
@@ -104,7 +114,7 @@ const MemoryGame = () => {
         </>
       )}
 
-      {/* Scoreboard  */}
+      {/* score */}
       {gameStarted === false && matchedPairs.length === numPairs && (
         <div className="score-overlay">
           <div className="score-board">
@@ -117,6 +127,8 @@ const MemoryGame = () => {
     </div>
   );
 };
+
+
 
 
 function App() {
