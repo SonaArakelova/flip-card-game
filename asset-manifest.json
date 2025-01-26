@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/flip-card-game/static/css/main.c0cde71f.css",
+    "main.js": "/flip-card-game/static/js/main.75b27157.js",
+    "index.html": "/flip-card-game/index.html",
+    "main.c0cde71f.css.map": "/flip-card-game/static/css/main.c0cde71f.css.map",
+    "main.75b27157.js.map": "/flip-card-game/static/js/main.75b27157.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c0cde71f.css",
+    "static/js/main.75b27157.js"
+  ]
+}
