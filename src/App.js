@@ -64,7 +64,7 @@ const MemoryGame = () => {
     const value = e.target.value;
 
     if (value === '' || (value >= 2 && value <= 10 && value % 2 === 0)) {
-      setNumPairs(value);
+      setNumPairs(value === '' ? '' : parseInt(value));
     }
   };
 
