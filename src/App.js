@@ -71,7 +71,7 @@ const MemoryGame = () => {
           <input className='numinput'
             type="number"
             id="num-pairs"
-            min="4"
+            min="2"
             step="2"
             max="10"
             value={numPairs}
