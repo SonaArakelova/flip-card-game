@@ -63,8 +63,9 @@ const MemoryGame = () => {
   const handleInputChange = (e) => {
     const value = e.target.value;
 
+
     if (value === '' || (value >= 2 && value <= 10 && value % 2 === 0)) {
-      setNumPairs(value === '' ? '' : parseInt(value));
+      setNumPairs(value === '' ?  setNumPairs(2) : parseInt(value));
     }
   };
 
@@ -75,7 +76,7 @@ const MemoryGame = () => {
       {/* Input field  */}
       {!gameStarted ? (
         <div className="input-container">
-          <label className='numlabel' htmlFor="num-pairs">Choose number of pairs:</label>
+          <label className='numlabel' htmlFor="num-pairs">Choose even number of pairs:</label>
           <br />
           <input
             className='numinput'
