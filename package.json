@@ -2,6 +2,7 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://sonaarakelova.github.io/flip-card-game/",
   "dependencies": {
     "@faker-js/faker": "^9.4.0",
     "cra-template": "1.2.0",
